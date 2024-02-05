@@ -2,7 +2,7 @@ package com.example.models
 
 import java.util.concurrent.atomic.AtomicInteger
 
-class Article
+class ArticleBefore
 private constructor(
     val id: Int,
     var title: String,
@@ -16,7 +16,7 @@ private constructor(
     }
 }
 
-val articles = mutableListOf(Article.newEntry(
+val articles = mutableListOf(ArticleBefore.newEntry(
     "The drive to develop",
     "...it's what keeps me going."
 ))

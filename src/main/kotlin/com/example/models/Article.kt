@@ -1,8 +1,12 @@
 package com.example.models
 
 import org.jetbrains.exposed.sql.*
+import java.io.Serializable
 
-data class Article(val id: Int, val title: String, val body: String)
+//data class Article(val id: Int, val title: String, val body: String)
+data class Article(
+    val id: Int, val title: String, val body: String
+): Serializable
 
 object Articles : Table() {
     val id = integer("id").autoIncrement()

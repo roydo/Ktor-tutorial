@@ -6,6 +6,9 @@ val logback_version: String by project
 val exposed_version: String by project
 val h2_version: String by project
 
+val hikaricp_version: String by project
+val ehcache_version: String by project
+
 plugins {
     kotlin("jvm") version "1.9.22"
     id("io.ktor.plugin") version "2.3.7"
@@ -37,6 +40,9 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     implementation("com.h2database:h2:$h2_version")
     
+    implementation("com.zaxxer:HikariCP:$hikaricp_version")
+    implementation("org.ehcache:ehcache:$ehcache_version")
+
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

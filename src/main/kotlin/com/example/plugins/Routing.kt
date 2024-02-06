@@ -1,6 +1,9 @@
 package com.example.plugins
 
-import com.example.dao.dao
+import com.example.dao.DAOFacade
+import com.example.dao.DAOFacadeCacheImpl
+import com.example.dao.DAOFacadeImpl
+//import com.example.dao.dao
 import com.example.models.Article
 import com.example.models.articles
 import io.ktor.http.*
@@ -11,9 +14,21 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.util.*
+import kotlinx.coroutines.runBlocking
+import java.io.File
 
 
 fun Application.configureRouting() {
+    val dao: DAOFacade = DAOFacadeCacheImpl(
+        DAOFacadeImpl(),
+        File(environment.config.property("storage.ehcacheFilePath").getString())
+    ).apply {
+        runBlocking {
+            if(allArticles().isEmpty()) {
+                addNewArticle("The drive to develop!", "...it's what keeps me going.")
+            }
+        }
+    }
     routing {
         get("/") {
             call.respondRedirect("articles")

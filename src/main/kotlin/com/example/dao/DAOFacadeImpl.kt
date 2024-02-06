@@ -46,6 +46,7 @@ class DAOFacadeImpl : DAOFacade {
     }
 }
 
+/*
 val dao: DAOFacade = DAOFacadeImpl().apply {
     runBlocking {
         if(allArticles().isEmpty()) {
@@ -56,3 +57,4 @@ val dao: DAOFacade = DAOFacadeImpl().apply {
         }
     }
 }
+*/

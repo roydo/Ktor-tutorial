@@ -30,9 +30,12 @@ fun Application.configureRouting() {
         }
     }
     routing {
+        /*
         get("/") {
             call.respondRedirect("articles")
         }
+        */
+
         route("articles") {
             get {
                 // show a list of articles
@@ -98,11 +101,13 @@ fun Application.configureRouting() {
                 }
             }
         }
-        
+
+        /*
         staticResources(
             "/static",
             "files"
         )
+        */
     }
 }
 
